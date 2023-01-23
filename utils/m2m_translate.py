@@ -41,13 +41,9 @@ def translate_multi_p(model, sentences=None, source_lang='zh', target_lang='en',
 def test():
     cuda = "cuda" if torch.cuda.is_available() else "cpu"
     model = load_model("m2m-100-lg", cuda)
-    sentence = """Il existe de nombreux types de sources de logement pour les locations en France.
-  Le premier est l'appartement des étudiants. Ils sont généralement situés à l'intérieur ou sur un campus universitaire. Parce que ces appartements universitaires sont moins chers à louer que d'habitude, ils sont très populaires auprès des étudiants universitaires. Le deuxième type est l'appartement privé pour étudiants universitaires. Le premier type d'appartement universitaire est en pénurie, de sorte que l'appartement universitaire privé se développe rapidement. Mais c'est plus cher qu'un appartement universitaire.
-Le troisième type est l'internat familial. Il vous permet de vivre avec la famille du propriétaire, ce qui vous permet de mieux comprendre la culture française.
-La France est un pays développé et très attrayant, avec une grande variété de logements. Les étudiants étrangers en France peuvent choisir en fonction de leurs besoins."""
-    sentences = ['我爱中华', '我是中国人', '我是英国人', '这是一句中文']
+    sentence = "I love you"
     begin_time = time.time()
-    print(translate(model, sentence, source_lang='fr', target_lang='zh', batch_size=4))
+    print(translate(model, sentence, source_lang='en', target_lang='zh', batch_size=4))
     print(time.time() - begin_time)
 
 

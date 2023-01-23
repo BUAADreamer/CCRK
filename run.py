@@ -82,16 +82,12 @@ def run_pretrain(args):
     print("### Start pre-training", flush=True)
 
     dist_launch = get_dist_launch(args) + ' --use_env '
-
-    # save0 = "--save0" if args.save0 else ""
-    # imgbsz = f"--imgbsz {args.imgbsz}"
-    Pretrain_name = f'Pretrain_{args.unialign}' if args.unialign else 'Pretrain'
-    # train_file = f'--train_file {args.train_file}' if args.train_file else ''
+    Pretrain_name = f'Pretrain_{args.pret_type}' if args.pret_type else 'Pretrain'
     checkpoint = f'--checkpoint {args.checkpoint}' if args.checkpoint else ''
-    other = f'{args.pret_para}' if args.pret_para else ''
+    pret_para = f'{args.pret_para}' if args.pret_para else ''
     os.system(f"{dist_launch} {Pretrain_name}.py --seed {args.seed} "
               f"--epoch {args.epoch} --config {args.config} --output_dir {args.output_dir} {checkpoint}"
-              f" {other}")
+              f" {pret_para}")
 
 
 def run_pretrain_nlvr(args):
@@ -250,15 +246,7 @@ def run_wit(args):
 
 
 def run(args):
-    if args.task == 'pretrain_cclm_3m':
-        args.config = 'configs/Pretrain_3m.yaml'
-        run_pretrain(args)
-
-    elif args.task == 'pretrain_cclm_4m':
-        args.config = 'configs/Pretrain_4m.yaml'
-        run_pretrain(args)
-
-    elif args.task == 'itr_coco':
+    if args.task == 'itr_coco':
         run_itr_coco(args)
 
     elif args.task == 'itr_multi30k':
@@ -289,17 +277,9 @@ def run(args):
     elif args.task == 'wit':
         run_wit(args)
 
-    elif args.task == 'pretrain_1m':
-        args.config = 'configs/Pretrain_1m.yaml'
-        run_pretrain(args)
-    elif args.task == 'pretrain_1m_omt_cclm':
-        args.config = 'configs/Pretrain_1m_omt_cclm.yaml'
-        run_pretrain(args)
-    elif args.task == 'pretrain_1m_omt_ours':
-        args.config = 'configs/Pretrain_1m_omt_ours.yaml'
-        run_pretrain(args)
     elif args.task == 'pretrain':
         run_pretrain(args)
+
     else:
         raise NotImplementedError(f"task == {args.task}")
 
@@ -333,17 +313,13 @@ if __name__ == '__main__':
     parser.add_argument('--gmt', action='store_true', help="whether use google machine translation as test set")
 
     parser.add_argument('--device', default=None, type=str, help="which gpu can be visible")
-    parser.add_argument('--calcu', action='store_true', help="whether calculate analysis")
-    parser.add_argument('--save0', action='store_true', help="whether save model at the beginning")
-    parser.add_argument('--zs', action='store_true', help='whether finetune 1 epoch on the test set')
-    parser.add_argument('--unialign', type=str, default='', help='whether use our model')
+    parser.add_argument('--pret_type', type=str, default='', help='use which pretrain code, dafault is ours')
     parser.add_argument('--rank', type=int, help='node rank', default=0)
     parser.add_argument('--nnodes', type=int, help='node num', default=1)
     parser.add_argument('--master_addr', type=str, help='node rank', default='')
-    parser.add_argument('--imgbsz', type=int, help='node rank', default=0)
     parser.add_argument('--debug', help='debug enable', action='store_true')
-    parser.add_argument('--train_file', help='train file list use , join', type=str, default='')
-    parser.add_argument('--pret_para', help='', type=str, default='')
+    parser.add_argument('--pret_para', help='other params for pretraining code', type=str, default='')
+    parser.add_argument('--ft_para', help='other params for finetune code', type=str, default='')
     parser.add_argument('--port', type=int, help='dist main port', default=-1)
 
     args = parser.parse_args()

@@ -1,6 +1,6 @@
 ## Data
 train_file: [
-  "../pretrain_data/translated_4M/1m-mm-data"
+  "../pretrain_data/translated_4M/cc3m-mm-data-all",
 ]  # multilingual x multimodal
 
 train_dataset_size: 996964 # for IterableDataset
@@ -10,7 +10,7 @@ images: { image_key: "image",
           is_image_rpath: False, # read path or base64 encoding
           caption_key: "caption",
           tokenized: False,  # whether texts have been tokenized
-          batch_size: 64,  # 128 x 8 = 1024
+          batch_size: 64,  # 64 x 2 = 128
           num_workers: 4,  # better -> the total number of training files % (world_size * num_workers) == 0
   # language_chosen: ['en'],
           iter_perc: 1.0,

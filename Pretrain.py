@@ -1,8 +1,3 @@
-# Cross-View Language Modeling: Towards Unified Cross-Lingual Cross-Modal Pre-training (https://arxiv.org/abs/2206.00621)
-# Github: https://github.com/zengyan-97/CCLM
-# Copyright (c) 2022, ByteDance Inc.
-# All rights reserved.
-
 import argparse
 import os
 import sys
@@ -330,13 +325,16 @@ if __name__ == '__main__':
     parser.add_argument('--checkpoint', type=str, help='pretrain model checkpoint', default='')
     parser.add_argument('--train_file', help='train file list use , join', type=str, default='')
     parser.add_argument('--neg_sample_type', help='neg sample type 0,1,2', default=1, type=int)
-    parser.add_argument('--sample_lan_file', default='')
-    parser.add_argument('--need_divm', default=0, type=int)
-    parser.add_argument('--caption_num', default=0, type=int)
-    parser.add_argument('--cclm_easy', default=0, type=int)
+    parser.add_argument('--sample_lan_file', default='', help='for analysis the choice of language')
+    parser.add_argument('--need_divm', default=0, type=int,
+                        help='0-->mitc loss divide the number of used language list other-->divide this number')
+    parser.add_argument('--caption_num', default=0, type=int,
+                        help='0-->use all caption other-->random choose some caption')
+    parser.add_argument('--cclm_easy', help='whether use cclmeasy loss function', default=0, type=int)
     parser.add_argument('--itc_allgather', default=0, type=int, help="0--mitc allgather 1--mitc not allgather")
-    parser.add_argument('--vicreg', default=1, type=int, help="need vicreg")
+    parser.add_argument('--vicreg', default=0, type=int, help="need vicreg")
     parser.add_argument('--lr', default=1e-4, type=float)
+    parser.add_argument('--language_chosen', help='choose language list', default='', type=str)
     args = parser.parse_args()
 
     config = yaml.load(open(args.config, 'r'), Loader=yaml.Loader)
@@ -344,7 +342,8 @@ if __name__ == '__main__':
         config['images']['batch_size'] = args.imgbsz
     if args.train_file:
         config['train_file'] = args.train_file.split(',')
-        print()
+    if args.language_chosen:
+        config['images']['language_chosen'] = args.language_chosen.split(',')
     config['neg_sample_type'] = args.neg_sample_type
     config['sample_lan_file'] = args.sample_lan_file
     config['need_divm'] = args.need_divm

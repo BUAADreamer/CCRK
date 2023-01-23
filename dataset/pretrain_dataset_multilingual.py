@@ -1,12 +1,3 @@
-# Cross-View Language Modeling: Towards Unified Cross-Lingual Cross-Modal Pre-training (https://arxiv.org/abs/2206.00621)
-# Github: https://github.com/zengyan-97/CCLM
-# Copyright (c) 2022, ByteDance Inc.
-# All rights reserved.
-
-# Multi-Grained Vision Language Pre-Training: Aligning Texts with Visual Concepts (https://arxiv.org/abs/2111.08276)
-# Github: https://github.com/zengyan-97/X-VLM
-# Copyright (c) 2022, ByteDance Inc.
-# All rights reserved.
 import base64
 import json
 import copy
@@ -261,19 +252,18 @@ class ImageMultiTextDataset(DistLineReadingDataset):
                     text_ids, text_atts, text_ids_masked, masked_pos, masked_ids = [], [], [], [], []
                     if not self.language_chosen:
                         self.language_chosen = list(captions.keys())
-                        # if len(self.language_chosen) == 6:
-                        #     self.language_chosen = ['en', 'de', 'zh', 'ja', 'fr', 'cs']
-                        # else:
-                        #     self.language_chosen = ['en', 'de', 'zh', 'ja', 'fr', 'cs', 'id', 'tr', 'ru', 'es']
+                        # sort language original list by default dict order
                         self.language_chosen = sorted(self.language_chosen)
                         self.lan_num = len(self.language_chosen)
                         self.lanid_ls = list(range(self.lan_num))
                         print('language_chosen:', self.language_chosen)
                     lanid_chosen = self.lanid_ls
                     if self.caption_num > 0:
+                        # caption_num > 0 ==> random choose caption_num language text
                         lanid_chosen = random.sample(lanid_chosen, self.caption_num)
                         lanid_chosen.sort()
                     language_ls = []
+                    # get language list as same as the original sequence
                     for lanid in lanid_chosen:
                         language_ls.append(self.language_chosen[lanid])
                     for lan in language_ls:
@@ -294,24 +284,6 @@ class ImageMultiTextDataset(DistLineReadingDataset):
                         text_ids_masked.append(text_id_masked)
                         masked_pos.append(masked_po)
                         masked_ids.append(masked_id)
-                        # if text_ids is None:
-                        #
-                        #     text_ids = text_id.unsqueeze(0)
-                        #     text_atts = text_att.unsqueeze(0)
-                        #     text_ids_masked = text_id_masked.unsqueeze(0)
-                        #     masked_pos = text_id_masked.unsqueeze(0)
-                        #     masked_ids = masked_id.unsqueeze(0)
-                        # else:
-                        #     text_ids = torch.cat((text_ids, data[0].unsqueeze(0)))
-                        #     text_atts = torch.cat((text_atts, data[1].unsqueeze(0)))
-                        #     text_ids_masked = torch.cat((text_ids_masked, data[2].unsqueeze(0)))
-                        #     masked_pos = torch.cat((masked_pos, data[3].unsqueeze(0)))
-                        #     masked_ids = torch.cat((masked_ids, data[4].unsqueeze(0)))
-                    # text_ids = torch.stack(tuple(text_ids))
-                    # text_atts = torch.stack(tuple(text_atts))
-                    # text_ids_masked = torch.stack(tuple(text_ids_masked))
-                    # masked_pos = torch.stack(tuple(masked_pos))
-                    # masked_ids = torch.stack(tuple(masked_ids))
                     yield image, text_ids, text_atts, text_ids_masked, masked_pos, masked_ids
                 else:
                     caption = self.get_caption(ann[self.caption_key])
@@ -380,23 +352,6 @@ class ImageMultiTextDataset(DistLineReadingDataset):
                     batch_tensors.append(torch.stack(x))
                 else:
                     batch_tensors.append(torch.tensor(x, dtype=torch.long))
-        # for d in batch_tensors:
-        #     print(d.shape)
-        '''
-        torch.Size([24, 3, 224, 224])
-        torch.Size([144, 40])
-        torch.Size([144, 40])
-        torch.Size([144, 40])
-        torch.Size([144, 12])
-        torch.Size([144, 12])
-        
-        torch.Size([24, 3, 224, 224])
-        torch.Size([24, 40])
-        torch.Size([24, 40])
-        torch.Size([24, 40])
-        torch.Size([24, 12])
-        torch.Size([24, 12])
-        '''
         return batch_tensors
 
 

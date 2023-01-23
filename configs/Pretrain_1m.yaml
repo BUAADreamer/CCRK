@@ -18,9 +18,6 @@ images: { image_key: "image",
 
 
 train_file_regions: [
-  #  '/home/LAB/fengzc/pretrain_data/translated_objects_regions/coco-object-mm-text-only',
-  #  '/home/LAB/fengzc/pretrain_data/translated_objects_regions/vg-object-mm-text-only',
-  #  '/home/LAB/fengzc/pretrain_data/translated_objects_regions/vg-region-mm-text-only'
 ]  # multilingual x multimodal
 regions: { image_key: "binary", is_image_rpath: False, caption_key: "caption", tokenized: False, code_switch: True,
   # language_chosen: ['zh', 'en'],

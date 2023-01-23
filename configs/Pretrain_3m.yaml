@@ -7,10 +7,6 @@ train_file: [
 ]  # multilingual x multimodal
 
 train_dataset_size: 3309520 # for IterableDataset
-#    3M数据集: 1863804 (subset of cc3m)
-#    1M数据集: 1445716 (vg+sbu+coco)
-#    4M数据集: 3309520 (3M+1M)
-#    BHU1M抽样数据: 996964 (subset of 4M)
 
 images: { image_key: "image",
           is_image_rpath: False, # read path or base64 encoding
@@ -24,9 +20,6 @@ images: { image_key: "image",
 
 
 train_file_regions: [
-  #  '/home/LAB/fengzc/pretrain_data/translated_objects_regions/coco-object-mm-text-only',
-  #  '/home/LAB/fengzc/pretrain_data/translated_objects_regions/vg-object-mm-text-only',
-  #  '/home/LAB/fengzc/pretrain_data/translated_objects_regions/vg-region-mm-text-only'
 ]  # multilingual x multimodal
 regions: { image_key: "binary", is_image_rpath: False, caption_key: "caption", tokenized: False, code_switch: True,
   # language_chosen: ['zh', 'en'],

@@ -38,36 +38,6 @@ def translate_multi_p(model, sentences=None, source_lang='zh', target_lang='en',
     return translations_multi_p
 
 
-def load_dataset():
-    dataset2num = {
-        "cc3m": 0,  # 256
-        "coco": 0,  # 64
-        "sbu": 0,  # 64
-        "vg": 1  # 128
-    }
-    dataset2sentences = {
-        "cc3m": [],
-        "coco": [],
-        "sbu": [],
-        "vg": []
-    }
-    for k in dataset2num:
-        num = dataset2num[k]
-        path = f"/home/LAB/fengzc/pretrain_data/translated_4M/{k}/"
-        for i in range(num):
-            dataset2sentences[k].append([])
-            file_path = path + "part_{:d}.data".format(i)
-            if k == "cc3m":
-                file_path = path + "part-{:05d}.data".format(i)
-            lines = open(file_path).readlines()
-            for line in lines:
-                line = line.strip()
-                if line != '':
-                    data = json.loads(line)
-                    dataset2sentences[k][i].append(data["caption"]["en"])
-    return dataset2sentences
-
-
 def test():
     cuda = "cuda" if torch.cuda.is_available() else "cpu"
     model = load_model("m2m-100-lg", cuda)
@@ -81,32 +51,5 @@ La France est un pays développé et très attrayant, avec une grande variété 
     print(time.time() - begin_time)
 
 
-def translate_4M():
-    dataset2sentences = load_dataset()
-    dataset2res = {}
-    for k in dataset2sentences:
-        dataset2res[k] = []
-    model = load_model("m2m-100-lg", "cuda")
-    for k in dataset2sentences:
-        all_begin_time = time.time()
-        all_sentences = dataset2sentences[k]
-        cnt = 0
-        for i in range(len(all_sentences)):
-            sentences = all_sentences[i]
-            cnt += len(sentences)
-            begin_time = time.time()
-            dataset2res[k].append(translate(model, sentences, target_lang='tr', batch_size=64))
-            delta_time = time.time() - begin_time
-            print("\r", f"{i} done, use {delta_time}", end='', flush=True)
-        all_delta_time = time.time() - all_begin_time
-        all_delta_time = round(all_delta_time / 60, 2)
-        print("\r", f"{k} done, use {all_delta_time} min, translate {cnt} sentence")
-
-
 if __name__ == '__main__':
-    # translate_4M()
     test()
-else:
-    # model = load_model("m2m-100-lg", "cuda:0")
-    # print("model load done")
-    pass

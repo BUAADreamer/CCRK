@@ -96,6 +96,6 @@ use_one_cl_proj_only: False
 ## Other Settings
 ckpt_frequent_step: 10000
 ckpt_frequent: 1  # epoch
-optimizer: { opt: adamW, lr: 2e-4, weight_decay: 0.01, lr_mult: 2 }
-schedular: { sched: linear, lr: 2e-4, epochs: 30, num_warmup_steps: 0.03006253006253006 }
+optimizer: { opt: adamW, lr: 1e-4, weight_decay: 0.01, lr_mult: 2 }
+schedular: { sched: linear, lr: 1e-4, epochs: 30, num_warmup_steps: 0.03006253006253006 }
 accelerator: { SYNCBN: false, FP16_OPT_LEVEL: O1, FP16_LOSS_SCALE: dynamic, RNG_SEED: 42, GRAD_ACCUMULATE_STEPS: 1, CLIP_GRAD_NORM: 1.0 }

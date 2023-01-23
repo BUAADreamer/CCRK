@@ -1,0 +1,12 @@
+timm==0.4.9
+transformers==4.12.5
+ruamel_yaml
+opencv-python
+scikit-image
+matplotlib
+torch==1.13.0
+torchvision==0.14.0
+pycocotools
+pycocoevalcap
+datasets
+easynmt==2.0.2

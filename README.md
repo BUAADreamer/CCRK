@@ -1,5 +1,13 @@
 # xxx: xxx
 
+## Acknowledgement
+
+About code, Our project is based on [CCLM](https://github.com/zengyan-97/CCLM).
+
+About pretraining datasets, `zh,ja,de,fr,cs` texts in `cc3m` are translated by [UC2](https://github.com/zmykevin/UC2) while `zh,ja,de,fr,cs` texts in `sbu/coco/vg` are translated by [CCLM](https://github.com/zengyan-97/CCLM). For other languages `id,es,ru,tr`, we use `m2m_100_1.2B` model developed by [Meta AI](https://ai.facebook.com/research/) and [EasyNMT](https://github.com/UKPLab/EasyNMT) as a tool to translate all datasets from English.
+
+Thanks for their great jobs!
+
 ## Requirements
 
 - Install python3 environment

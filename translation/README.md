@@ -2,6 +2,8 @@
 
 For the large translation model m2m-100-lg, we have used a batch size of 16 on NVIDIA A100 with 11.2GB of memory.
 
+For more usage, please see the code in `m2m_translate.py`
+
 ## Test Translation Model
 
 ```shell

@@ -32,8 +32,7 @@ def translate(model, sentences=None, source_lang='zh', target_lang='en', batch_s
 
 
 def test(text):
-    cuda = "cuda" if torch.cuda.is_available() else "cpu"
-    model = load_model("m2m-100-lg", cuda)
+    model = load_model("m2m-100-lg", args.device)
     for lan in args.trans_lanls:
         print(translate(model, text, source_lang=args.source_lang, target_lang=lan, batch_size=4))
 
@@ -90,7 +89,7 @@ if __name__ == '__main__':
     parser.add_argument("--test", action='store_true', help='whether test the translation')
     parser.add_argument("--text", type=str, default='我爱你', help='for test only')
     parser.add_argument("--device", type=str, default='cpu', help='cpu or cuda:n')
-    parser.add_argument("--source_lang", type=str, default='en', help='translate from which language')
+    parser.add_argument("--source_lang", type=str, default='zh', help='translate from which language')
     parser.add_argument("--bs", type=int, default=16, help='batch size to translate')
     args = parser.parse_args()
     args.trans_lanls = args.trans_lanls.split(',')

@@ -7,7 +7,7 @@ For more usage, please see the code in `m2m_translate.py`
 ## Test Translation Model
 
 ```shell
-python3 data_process.py --test --text "我爱你"
+python3 data_process.py --test --text "我爱你" --source_lang zh --trans_lanls en,fr,de
 ```
 
 ## Translate One File

@@ -97,17 +97,26 @@ For more details, please read the code dataset/pretrain_dataset_multilingual.py 
 
 Following previous works, we pretrain the model for only 30 epochs on 2 A100 GPUs. The batch size is set to 128.
 
-[xxx_1M_30epoch]()  
+|     Checkpoint      |               Dataset                |
+| :-----------------: | :----------------------------------: |
+| [xxx_1M_30epoch]()  | Random 1M Sample of All 6lan Version |
+| [xxx_2M_30epoch]()  |          CC2M 6lan Version           |
+| [xxx_2ME_30epoch]() |          CC2M 10lan Version          |
+| [xxx_3M_30epoch]()  |           All 6lan Version           |
+| [xxx_3ME_30epoch]() |          All 10lan Version           |
 
-[xxx_2M_30epoch]()  [xxx_2ME_30epoch]()    
+Tips: 
 
-[xxx_3M_30epoch]()  [xxx_3ME_30epoch]()
+* `All` : `CC2M+SBU+VG+COCO` , `SBU/VG/COCO` splits are borrowed from [CCLM](https://github.com/zengyan-97/CCLM).
+* `6lan Version` : `zh,en,de,fr,ja,cs`
+* `10lan Version` : `zh,en,de,fr,ja,cs,id,es,ru,tr`
+* `CC2M` : Because of many broken links, we only collect **1863804** images of [Conceptual Captions](https://github.com/google-research-datasets/conceptual-captions) Dataset.
 
 ## Finetune
 
 ### Data: MSCOCO and Multi30K
 
-Please download MSCOCO, Multi30K, and IGLUE from the corresponding websites. We provide some links for reference.
+Please download MSCOCO, Multi30K from the corresponding websites. We provide some links for reference.
 
 - MSCOCO 
 

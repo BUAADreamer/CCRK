@@ -289,7 +289,7 @@ if __name__ == '__main__':
     parser.add_argument('--task', type=str, required=True)
     parser.add_argument('--dist', type=str, required=True, help="see func get_dist_launch for details")
 
-    parser.add_argument('--config', default='', type=str, help="if not given, use default")
+    parser.add_argument('--config', default='configs/Pretrain.yaml', type=str, help="if not given, use default")
     parser.add_argument('--model', default='cclm-base-ft', type=str, help="to set default fine-tuning configs")
 
     parser.add_argument('--epoch', default=-1, type=int, help="for pre-training (debug) only")

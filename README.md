@@ -59,23 +59,14 @@ xxx/
 ## Pretrain
 
 ```shell
-# CCLMEASY 1M 6lan
-python3 run.py --task "pretrain" --dist "1" --output_dir "output/cclmeasy-1m-6lan" --seed 42 --config configs/Pretrain_1m.yaml --pret_para "--caption_num 1 --cclm_easy 1"
-
 # xxx 1M 6lan
 python3 run.py --task "pretrain" --dist "1" --output_dir "output/xxx-1m-6lan" --seed 42 --config configs/Pretrain_1m.yaml
-
-# CCLMEASY 2M 6lan
-python3 run.py --task "pretrain" --dist "1" --output_dir "output/cclmeasy-2m-6lan" --seed 42 --config configs/Pretrain_2m.yaml --pret_para "--caption_num 1 --cclm_easy 1"
 
 # xxx 2M 6lan
 python3 run.py --task "pretrain" --dist "1" --output_dir "output/xxx-2m-6lan" --seed 42 --config configs/Pretrain_2m.yaml --pret_para "--language_chosen zh,ja,en,de,fr,cs"
 
 # xxx 2M 10lan
 python3 run.py --task "pretrain" --dist "1" --output_dir "output/xxx-2m-10lan" --seed 42 --config configs/Pretrain_2m.yaml
-
-# CCLMEASY 3M 6lan
-python3 run.py --task "pretrain" --dist "1" --output_dir "output/cclmeasy-3m-6lan" --seed 42 --config configs/Pretrain_3m.yaml --pret_para "--caption_num 1 --cclm_easy 1"
 
 # xxx 3M 6lan
 python3 run.py --task "pretrain" --dist "1" --output_dir "output/xxx-3m-6lan" --seed 42 --config configs/Pretrain_3m.yaml --pret_para "--language_chosen zh,ja,en,de,fr,cs"
@@ -98,11 +89,11 @@ For more details, please read the code dataset/pretrain_dataset_multilingual.py 
 
 Following previous works, we pretrain the model for only 30 epochs on 2 A100 GPUs. The batch size is set to 128.
 
-[CCLMEASY_1M_30epoch]()  [xxx_1M_30epoch]()
+[xxx_1M_30epoch]()  
 
-[CCLMEASY_2M_30epoch]()  [xxx_2M_30epoch]()  [xxx_2ME_30epoch]()    
+[xxx_2M_30epoch]()  [xxx_2ME_30epoch]()    
 
-[CCLMEASY_3M_30epoch]()  [xxx_3M_30epoch]()  [xxx_3ME_30epoch]()
+[xxx_3M_30epoch]()  [xxx_3ME_30epoch]()
 
 ## Finetune
 

@@ -87,7 +87,7 @@ For distributed training across nodes, see run.py for more details.
 
 ### Data
 
-To facilitate research on multi-lingual multi-modal pre-training, we provide the text translation of [COCO+VG+SBU+CC3M](https://drive.google.com/drive/folders/1W5qgif3u7Z9orlvj3zJ0dUCsrDJl8s4I?usp=sharing), which contains 10 language: zh/en/de/fr/ja/cs/id/tr/ru/es
+To facilitate research on multi-lingual multi-modal pre-training, we provide the text translation of [COCO+VG+SBU+CC3M](https://drive.google.com/drive/folders/1lkRMFKSdz9bXhpB0n8eELF0ztbVmcBp6?usp=share_link), which contains 10 language: zh/en/de/fr/ja/cs/id/tr/ru/es
 
 **Please cite the corresponding papers appropriately and download the images from their websites.**
 
@@ -97,13 +97,13 @@ For more details, please read the code dataset/pretrain_dataset_multilingual.py 
 
 Following previous works, we pretrain the model for only 30 epochs on 2 A100 GPUs. The batch size is set to 128.
 
-|     Checkpoint      |               Dataset                |
-| :-----------------: | :----------------------------------: |
-| [xxx_1M_30epoch]()  | Random 1M Sample of All 6lan Version |
-| [xxx_2M_30epoch]()  |          CC2M 6lan Version           |
-| [xxx_2ME_30epoch]() |          CC2M 10lan Version          |
-| [xxx_3M_30epoch]()  |           All 6lan Version           |
-| [xxx_3ME_30epoch]() |          All 10lan Version           |
+|       Checkpoint        |               Dataset                |
+|:-----------------------:| :----------------------------------: |
+| [xxx_1M_30epoch TODO]() | Random 1M Sample of All 6lan Version |
+|   [xxx_2M_30epoch TODO]()    |          CC2M 6lan Version           |
+|   [xxx_2ME_30epoch TODO]()   |          CC2M 10lan Version          |
+|   [xxx_3M_30epoch TODO]()    |           All 6lan Version           |
+|   [xxx_3ME_30epoch TODO]()   |          All 10lan Version           |
 
 Tips: 
 

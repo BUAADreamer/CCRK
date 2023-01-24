@@ -206,8 +206,6 @@ def run_flickrco(args):
     assert os.path.exists("images/flickr30k-images")
 
     evaluate = ' --evaluate' if args.evaluate else ''
-    calcu = '--calcu' if args.calcu else ''
-    zs = "--zs" if args.zs else ''
 
     if args.fewshot:
         args.config = f"configs/cclm-base-ft/xFlickrCO_fewshot.yaml"
@@ -215,7 +213,7 @@ def run_flickrco(args):
                   f"--use_env xFlickrCO.py --config {args.config} "
                   f"--output_dir {args.output_dir} --bs {args.bs} --seed {args.seed} --epoch {args.epoch} "
                   f"{f'--output_hdfs {args.output_hdfs}' if len(args.output_hdfs) else ''} --checkpoint {args.checkpoint} "
-                  f"--fewshot {args.fewshot} --lr {args.lr}" + evaluate + " " + calcu)
+                  f"--fewshot {args.fewshot} --lr {args.lr}" + evaluate)
     else:
         args.config = f"configs/cclm-base-ft/xFlickrCO.yaml"
         trans_test = ' --gmt' if args.gmt else ''
@@ -223,7 +221,7 @@ def run_flickrco(args):
                   f"--use_env xFlickrCO.py --config {args.config} "
                   f"--output_dir {args.output_dir} --bs {args.bs} --seed {args.seed} --epoch {args.epoch} "
                   f"{f'--output_hdfs {args.output_hdfs}' if len(args.output_hdfs) else ''} --checkpoint {args.checkpoint} "
-                  f"--lr {args.lr} " + trans_test + evaluate + " " + calcu + f" {zs}")
+                  f"--lr {args.lr} " + trans_test + evaluate)
 
 
 def run_wit(args):

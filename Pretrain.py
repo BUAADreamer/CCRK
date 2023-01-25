@@ -276,7 +276,7 @@ def main(args, config):
     if checkpoint:
         if 'scaler' in checkpoint:
             accelerator.scaler.load_state_dict(checkpoint['scaler'])
-    model, optimizer, lr_scheduler = accelerator.set_up(model, optimizer, lr_scheduler, local_rank, world_size)
+    model, optimizer, lr_scheduler = accelerator.set_up(model, optimizer, lr_scheduler, local_rank, world_size, rank)
     # reinit_scheduler_properties_mysched(optimizer, lr_scheduler, arg_sche)
 
     checkpointer = Checkpointer(args.output_dir)

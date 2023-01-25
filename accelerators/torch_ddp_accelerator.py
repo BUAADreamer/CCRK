@@ -33,11 +33,10 @@ class TorchDDPAccelerator(Accelerator):
         self.rank = rank
 
     def set_up(self, model: Net, optimizer: Optimizer, lr_scheduler: LambdaLR,
-               local_rank: int, world_size: int) -> Tuple[DistributedDataParallel, Optimizer, LambdaLR]:
+               local_rank: int, world_size: int, rank: int) -> Tuple[DistributedDataParallel, Optimizer, LambdaLR]:
         """
         set up TorchDDPAccelerator, including process_group and torch_ddp
         """
-        rank = self.rank
         torch.backends.cudnn.benchmark = False
         random.seed(self.accelerator_rng_seed)
         np.random.seed(self.accelerator_rng_seed)
@@ -45,7 +44,8 @@ class TorchDDPAccelerator(Accelerator):
         torch.cuda.manual_seed_all(self.accelerator_rng_seed)
         master_address = os.environ.get('MASTER_ADDR', "127.0.0.1")
         master_port = int(os.environ.get('MASTER_PORT', 34171))
-
+        self.local_rank = local_rank
+        self.rand = rank
         torch.cuda.set_device(local_rank)
         model = model.cuda()
         if not torch.distributed.is_initialized():
@@ -69,7 +69,7 @@ class TorchDDPAccelerator(Accelerator):
             distributed.broadcast(v, src)
 
     def configure_ddp(self, model: Net, optimizer: Optimizer) -> Tuple[DistributedDataParallel, Optimizer]:
-        torch_model = DistributedDataParallel(model, device_ids=[self.rank], output_device=self.rank,
+        torch_model = DistributedDataParallel(model, device_ids=[self.local_rank],
                                               find_unused_parameters=True)
         self.ddp_model = torch_model
         return torch_model, optimizer

@@ -1,7 +1,3 @@
-# Cross-View Language Modeling: Towards Unified Cross-Lingual Cross-Modal Pre-training (https://arxiv.org/abs/2206.00621)
-# Github: https://github.com/zengyan-97/CCLM
-# Copyright (c) 2022, ByteDance Inc.
-# All rights reserved.
 import torch
 from models import XVLMBase
 

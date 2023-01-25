@@ -155,6 +155,8 @@ def main(args, config):
     if utils.is_main_process():
         print(f"### data {train_dataset_size}, batch size, {config['batch_size_train']} x {world_size}")
         print(f"### Test: {[(k, len(dataset)) for k, dataset in test_dataset_dict.items()]}")
+        if not os.path.exists(args.result_dir):
+            os.mkdir(args.result_dir)
 
     if args.distributed:
         num_tasks = utils.get_world_size()
@@ -322,8 +324,8 @@ if __name__ == '__main__':
 
     args.result_dir = os.path.join(args.output_dir, 'result')
     if utils.is_main_process():
-        hmkdir(args.output_dir)
-        hmkdir(args.result_dir)
+        if not os.path.exists(args.output_dir):
+            os.mkdir(args.output_dir)
 
     if args.lr != 0.:
         config['optimizer']['lr'] = args.lr

@@ -5,7 +5,7 @@ from models import XVLMBase
 class UniAlignLM(XVLMBase):
     def __init__(self, config):
         super().__init__(config, load_vision_params=True, load_text_params=True,
-                         use_contrastive_loss=True, use_matching_loss=True, use_mlm_loss=True, use_bbox_loss=True,
+                         use_contrastive_loss=True, use_matching_loss=True, use_mlm_loss=True, use_bbox_loss=False,
                          config_text=None)
         self.cclm_easy = True if config['cclm_easy'] == 1 else False
         self.use_tlm = True if ('use_tlm' in config) and config['use_tlm'] else False

@@ -226,7 +226,8 @@ def evaluation(model, data_loader, tokenizer, device, config):
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
     print('Evaluation time {}'.format(total_time_str))
-
+    if args.eval_not_cross:
+        return sims_matrix.t().cpu().numpy(), sims_matrix.cpu().numpy()
     return score_matrix_i2t.cpu().numpy(), score_matrix_t2i.cpu().numpy()
 
 
@@ -476,6 +477,7 @@ if __name__ == '__main__':
     parser.add_argument('--gmt', action='store_true', help="whether use google machine translation as test set")
     parser.add_argument('--calcu', action='store_true', help="whether calculate the similarity")
     parser.add_argument('--zs', action='store_true', help="whether calculate zero shot")
+    parser.add_argument('--eval_not_cross', action='store_true', help='not use cross embedding to eval')
     args = parser.parse_args()
 
     config = yaml.load(open(args.config, 'r'), Loader=yaml.Loader)

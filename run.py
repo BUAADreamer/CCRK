@@ -143,7 +143,7 @@ def run_itr_flickr(args):
     print("### Training Retrieval Flickr", flush=True)
     os.system(f"{dist_launch} "
               f"--use_env 'Retrieval.py' --config {args.config} "
-              f"--output_dir {args.output_dir} --bs {args.bs} --seed {args.seed} --checkpoint {args.checkpoint} {'--evaluate' if args.evaluate else ''}")
+              f"--output_dir {args.output_dir} --bs {args.bs} --seed {args.seed} --checkpoint {args.checkpoint} {'--evaluate' if args.evaluate else ''} " + f" {args.ft_para}")
 
 
 def run_itr_coco(args):
@@ -213,7 +213,7 @@ def run_flickrco(args):
                   f"--use_env xFlickrCO.py --config {args.config} "
                   f"--output_dir {args.output_dir} --bs {args.bs} --seed {args.seed} --epoch {args.epoch} "
                   f"{f'--output_hdfs {args.output_hdfs}' if len(args.output_hdfs) else ''} --checkpoint {args.checkpoint} "
-                  f"--fewshot {args.fewshot} --lr {args.lr}" + evaluate)
+                  f"--fewshot {args.fewshot} --lr {args.lr}" + evaluate + f" {args.ft_para}")
     else:
         args.config = f"configs/cclm-base-ft/xFlickrCO.yaml"
         trans_test = ' --gmt' if args.gmt else ''
@@ -221,7 +221,7 @@ def run_flickrco(args):
                   f"--use_env xFlickrCO.py --config {args.config} "
                   f"--output_dir {args.output_dir} --bs {args.bs} --seed {args.seed} --epoch {args.epoch} "
                   f"{f'--output_hdfs {args.output_hdfs}' if len(args.output_hdfs) else ''} --checkpoint {args.checkpoint} "
-                  f"--lr {args.lr} " + trans_test + evaluate)
+                  f"--lr {args.lr} " + trans_test + evaluate + f" {args.ft_para}")
 
 
 def run_wit(args):

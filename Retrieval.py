@@ -152,7 +152,8 @@ def evaluation(model, data_loader, tokenizer, device, config):
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
     print('Evaluation time {}'.format(total_time_str))
-
+    if args.eval_not_cross:
+        return sims_matrix.t().cpu().numpy(), sims_matrix.cpu().numpy()
     return score_matrix_i2t.cpu().numpy(), score_matrix_t2i.cpu().numpy()
 
 
@@ -480,6 +481,7 @@ if __name__ == '__main__':
     parser.add_argument('--epoch', default=-1, type=int)
     parser.add_argument('--bs', default=-1, type=int, help="for each gpu, batch_size = bs // num_gpus")
     parser.add_argument('--evaluate', action='store_true')
+    parser.add_argument('--eval_not_cross', action='store_true', help='not use cross embedding to eval')
 
     args = parser.parse_args()
 

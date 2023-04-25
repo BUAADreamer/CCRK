@@ -1,4 +1,4 @@
-# xxx: xxx
+# CCRN: Improving Cross-Lingual Cross-Modal Retrieval Through 1-to-K Contrastive Learning
 
 ## Acknowledgement
 
@@ -24,7 +24,7 @@ pip3 install -r requirements.txt
 - Organize these files like this:
 
 ```
-xxx/
+CCRN/
     data/
         xlm-roberta-large/...
         swin_base_patch4_window7_224_22k.pth
@@ -67,20 +67,20 @@ xxx/
 ## Pretrain
 
 ```shell
-# xxx 1M 6lan
-python3 run.py --task "pretrain" --dist "1" --output_dir "output/xxx-1m-6lan" --seed 42 --config configs/Pretrain_1m.yaml
+# CCRN 1M 6lan
+python3 run.py --task "pretrain" --dist "1" --output_dir "output/CCRN-1m-6lan" --seed 42 --config configs/Pretrain_1m.yaml
 
-# xxx 2M 6lan
-python3 run.py --task "pretrain" --dist "1" --output_dir "output/xxx-2m-6lan" --seed 42 --config configs/Pretrain_2m.yaml --pret_para "--language_chosen zh,ja,en,de,fr,cs"
+# CCRN 2M 6lan
+python3 run.py --task "pretrain" --dist "1" --output_dir "output/CCRN-2m-6lan" --seed 42 --config configs/Pretrain_2m.yaml --pret_para "--language_chosen zh,ja,en,de,fr,cs"
 
-# xxx 2M 10lan
-python3 run.py --task "pretrain" --dist "1" --output_dir "output/xxx-2m-10lan" --seed 42 --config configs/Pretrain_2m.yaml
+# CCRN 2M 10lan
+python3 run.py --task "pretrain" --dist "1" --output_dir "output/CCRN-2m-10lan" --seed 42 --config configs/Pretrain_2m.yaml
 
-# xxx 3M 6lan
-python3 run.py --task "pretrain" --dist "1" --output_dir "output/xxx-3m-6lan" --seed 42 --config configs/Pretrain_3m.yaml --pret_para "--language_chosen zh,ja,en,de,fr,cs"
+# CCRN 3M 6lan
+python3 run.py --task "pretrain" --dist "1" --output_dir "output/CCRN-3m-6lan" --seed 42 --config configs/Pretrain_3m.yaml --pret_para "--language_chosen zh,ja,en,de,fr,cs"
 
-# xxx 3M 10lan
-python3 run.py --task "pretrain" --dist "1" --output_dir "output/xxx-3m-10lan" --seed 42 --config configs/Pretrain_3m.yaml
+# CCRN 3M 10lan
+python3 run.py --task "pretrain" --dist "1" --output_dir "output/CCRN-3m-10lan" --seed 42 --config configs/Pretrain_3m.yaml
 ```
 
 For distributed training across nodes, see run.py for more details.
@@ -99,11 +99,11 @@ Following previous works, we pretrain the model for only 30 epochs on 2 A100 GPU
 
 |       Checkpoint        |               Dataset                |
 |:-----------------------:| :----------------------------------: |
-| [xxx_1M_30epoch TODO]() | Random 1M Sample of All 6lan Version |
-|   [xxx_2M_30epoch TODO]()    |          CC2M 6lan Version           |
-|   [xxx_2ME_30epoch TODO]()   |          CC2M 10lan Version          |
-|   [xxx_3M_30epoch TODO]()    |           All 6lan Version           |
-|   [xxx_3ME_30epoch TODO]()   |          All 10lan Version           |
+| [CCRN_1M_30epoch TODO]() | Random 1M Sample of All 6lan Version |
+|   [CCRN_2M_30epoch TODO]()   |          CC2M 6lan Version           |
+|   [CCRN_2ME_30epoch TODO]()   |          CC2M 10lan Version          |
+|   [CCRN_3M_30epoch TODO]()   |           All 6lan Version           |
+|   [CCRN_3ME_30epoch TODO]()   |          All 10lan Version           |
 
 Tips: 
 
@@ -165,7 +165,7 @@ and the valid and test files like this:
 For IGLUE, you just need to clone [this repo](https://github.com/e-bug/iglue) and place it in the root path of our repo as follows. Our code works on the original annotations of IGLUE without any preprocess.
 
 ```
-xxx/
+CCRN/
     iglue/
         datasets/...
 ```

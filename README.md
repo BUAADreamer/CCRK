@@ -79,7 +79,7 @@ For more details, please read the code dataset/pretrain_dataset_multilingual.py 
 
 ### Checkpoints
 
-Following previous works, we pretrain the model for only 30 epochs on 2 A100 GPUs. The batch size is set to 128.
+We pretrain the model for only 30 epochs on 2 A100 GPUs. The batch size is set to 128.
 
 |                                    Checkpoint                                     |               Dataset                |
 |:---------------------------------------------------------------------------------:|:------------------------------------:|

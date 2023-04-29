@@ -46,22 +46,6 @@ CCRK/
         	image_pixels/*.csv
         wit_test/
         	*.csv
-        marvl-images/
-            id/
-                images/...
-                extra/...
-            sw/...
-            ta/...
-            tr/...
-            zh/...
-        marvl_fewshot/
-            id/
-                3-Beo/...
-                all/...
-            tr/...
-            zh/...
-        gqa/images/...
-    	nlvr2/images/train/...
 ```
 
 ## Pretrain
@@ -97,13 +81,10 @@ For more details, please read the code dataset/pretrain_dataset_multilingual.py 
 
 Following previous works, we pretrain the model for only 30 epochs on 2 A100 GPUs. The batch size is set to 128.
 
-|       Checkpoint        |               Dataset                |
-|:-----------------------:| :----------------------------------: |
-| [CCRK_1M_30epoch TODO]() | Random 1M Sample of All 6lan Version |
-|   [CCRK_2M_30epoch TODO]()   |          CC2M 6lan Version           |
-|   [CCRK_2ME_30epoch TODO]()   |          CC2M 10lan Version          |
-|   [CCRK_3M_30epoch TODO]()   |           All 6lan Version           |
-|   [CCRK_3ME_30epoch TODO]()   |          All 10lan Version           |
+|                                    Checkpoint                                     |               Dataset                |
+|:---------------------------------------------------------------------------------:|:------------------------------------:|
+| [CCRK_2M_10lan_30epoch](https://pan.baidu.com/s/1U4rNTD103N8T8MSSrI6bLA?pwd=cdkg) |          CC2M 10lan Version          |
+| [CCRK_3M_10lan_30epoch](https://pan.baidu.com/s/1mb6JU_ZyvvkrDT5Zn69hRw?pwd=rt1r) |    CC2M+COCO+VG+SBU 10lan Version    |
 
 Tips: 
 
@@ -170,10 +151,6 @@ CCRK/
         datasets/...
 ```
 
-For MaRVL, please download the `marvl-images.zip` and `few-shot.zip` from the [marvl site](https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP3/42VZ4P) , and extract them to `images` with name of `marvl-images` and `marvl_fewshot`. You also need download nlvr2 images from [nlvr site](https://github.com/lil-lab/nlvr) and put them to the `images` folder and make the path in json file same as your real path.
-
-For xGQA, please download images from [gqa site](https://cs.stanford.edu/people/dorarad/gqa/download.html) and put them in `images` folder.
-
 For WIT, please download the `image_data_train.tar` and test images from its [kaggle](https://www.kaggle.com/c/wikipedia-image-caption/data) webpage, and extract them to `images` , `images/wit_test` seperately.
 
 Tips for WIT:
@@ -217,15 +194,6 @@ python3 run.py --dist 1 --task itr_coco --config configs/cclm-base-ft/Retrieval_
 We provide examples of fine-tuning on English train set and evaluating on the test sets of other languages.
 
 ```shell
-# XVNLI
-python3 run.py --dist 1 --task xvnli --output_dir output/path/to/save --checkpoint pretrained_model.th --bs 128 --seed 42
-
-# xGQA
-python3 run.py --dist 1 --task gqa --output_dir output/path/to/save --checkpoint pretrained_model.th --bs 80 --seed 42
-
-# MaRVL
-python3 run.py --dist 1 --task nlvr --output_dir output/path/to/save --checkpoint pretrained_model.th --bs 64 --seed 42 
-
 # xFlickr&CO
 python3 run.py --dist 1 --task xflickrco --output_dir output/path/to/save --checkpoint pretrained_model.th --bs 64 --seed 42
 
@@ -240,18 +208,9 @@ python3 run.py --dist 1 --task wit --output_dir output/path/to/save --bs 80 --se
 We also evaluate CCLM on IGLUE max-shot settings. **Note** that you need to finetune the pretrained model on English first, then load the checkpoints for few-shot learning.
 
 ```shell
-# XVNLI, optional language: ar/es/fr/ru
-python3 run.py --dist 1 --task xvnli --output_dir output/path/to/save --checkpoint en_finetuned_model.th --bs 128 --seed 42 --fewshot ar,48 --lr 1e-6
-
-# xGQA, optional language: bn/de/id/ko/pt/ru/zh
-python3 run.py --dist 1 --task gqa --output_dir output/path/to/save --checkpoint en_finetuned_model.th --bs 80 --seed 42 --fewshot bn --lr 1e-6
-
-# MaRVL, optional language: id/tr/zh
-python3 run.py --dist 1 --task nlvr --output_dir output/path/to/save --checkpoint en_finetuned_model.th --bs 64 --seed 42 --fewshot id --lr 1e-6
-
 # xFlickr&CO, optional language: de/es/id/ja/ru/tr/zh
 python3 run.py --dist 1 --task xflickrco --output_dir output/path/to/save --checkpoint en_finetuned_model.th --bs 64 --seed 42 --fewshot de,100 --lr 1e-6
 ```
 
-The value after language in `--fewshot` settings of XVNLI and xFlickr&CO is the number of few-shot samples, where we always use the maximum values.
+The value after language in `--fewshot` settings of xFlickr&CO is the number of few-shot samples, where we always use the maximum values.
 

@@ -15,14 +15,14 @@ def create_optimizer(args, model):
     ]
 
     no_decay = {"bias",
-        "LayerNorm.bias",
-        "LayerNorm.weight",
-        "norm.bias",
-        "norm.weight",
-        "norm1.bias",
-        "norm1.weight",
-        "norm2.bias",
-        "norm2.weight"}
+                "LayerNorm.bias",
+                "LayerNorm.weight",
+                "norm.bias",
+                "norm.weight",
+                "norm1.bias",
+                "norm1.weight",
+                "norm2.bias",
+                "norm2.weight"}
 
     if hasattr(model, 'init_params'):
         large_lr = model.init_params

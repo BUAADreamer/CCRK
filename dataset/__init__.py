@@ -16,10 +16,7 @@ from dataset.pretrain_dataset_multilingual import ImageMultiTextDataset, RegionM
     ParaTextDataset
 
 from dataset.retrieval_dataset import re_train_dataset, re_eval_dataset
-from dataset.nlvr_dataset import nlvr_dataset
-from dataset.vqa_dataset import vqa_dataset
 
-from dataset.xvnli_dataset import xvnli_dataset
 from dataset.xflickrco_dataset import xflickrco_train_dataset, xflickrco_eval_dataset
 from dataset.wit_dataset import wit_train_dataset, wit_eval_dataset
 
@@ -123,54 +120,6 @@ def create_dataset(dataset, config):
                 test_dataset_dict[k] = re_eval_dataset(rpath, test_transform, config['image_root'])
 
         return train_dataset, val_dataset_dict, test_dataset_dict
-
-    elif dataset == 'gqa':
-        train_dataset = vqa_dataset(config['train_file'], train_transform_wohflip, config['vqa_root'],
-                                    split='train', text_encoder=config['text_encoder'])
-
-        valid_dataset = vqa_dataset(config['valid_file'], test_transform, config['vqa_root'],
-                                    split='test', answer_list=config['answer_list'],
-                                    text_encoder=config['text_encoder'])
-
-        test_dataset_dict = {}
-        for language, (rpath, ans_rpath) in config['test_file'].items():
-            test_dataset_dict[language] = vqa_dataset(rpath, test_transform, config['vqa_root'], split='test',
-                                                      answer_list=ans_rpath,
-                                                      text_encoder=config['text_encoder'])
-
-        return train_dataset, valid_dataset, test_dataset_dict
-
-    elif dataset == 'nlvr_pretrain':
-        general_dataset = ImageMultiTextDataset(config, config['train_file'], rank=int(os.environ.get('RANK') or 0),
-                                                world_size=int(os.environ.get('WORLD_SIZE') or 1), shuffle=True,
-                                                repeat=True, transform=pretrain_transform)
-
-        return general_dataset
-
-    elif dataset == 'nlvr':
-        train_dataset = nlvr_dataset(config['train_file'], train_transform, config['image_root'])
-        val_dataset = nlvr_dataset(config['val_file'], test_transform, config['image_root'])
-
-        # test_dataset = nlvr_dataset(config['test_file'], test_transform, config['image_root'])
-
-        test_dataset_dict = {}  # marvl test
-        for k, rpath in config['test_file'].items():
-            if k == 'en':  # marvl does not have en test, so i use nlvr2 test set
-                test_dataset_dict[k] = nlvr_dataset(rpath, test_transform, image_root=config['image_root'])
-            else:
-                test_dataset_dict[k] = nlvr_dataset(rpath, test_transform, image_root=None)
-
-        return train_dataset, val_dataset, test_dataset_dict
-
-    elif dataset == 'xvnli':
-        train_dataset = xvnli_dataset(config['train_file'], train_transform, config['image_root'], config['max_tokens'])
-        val_dataset = xvnli_dataset(config['val_file'], test_transform, config['image_root'], config['max_tokens'])
-
-        test_dataset_dict = {}  # marvl test
-        for k, rpath in config['test_file'].items():
-            test_dataset_dict[k] = xvnli_dataset(rpath, test_transform, config['image_root'], config['max_tokens'])
-
-        return train_dataset, val_dataset, test_dataset_dict
 
     elif dataset == 'xflickrco':
         train_dataset = xflickrco_train_dataset(config['train_file'], train_transform,

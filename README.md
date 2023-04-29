@@ -89,7 +89,6 @@ Following previous works, we pretrain the model for only 30 epochs on 2 A100 GPU
 Tips: 
 
 * `All` : `CC2M+SBU+VG+COCO` , `SBU/VG/COCO` splits are borrowed from [CCLM](https://github.com/zengyan-97/CCLM).
-* `6lan Version` : `zh,en,de,fr,ja,cs`
 * `10lan Version` : `zh,en,de,fr,ja,cs,id,es,ru,tr`
 * `CC2M` : Because of many broken links, we only collect **1863804** images of [Conceptual Captions](https://github.com/google-research-datasets/conceptual-captions) Dataset.
 

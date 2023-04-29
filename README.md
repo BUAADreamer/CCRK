@@ -212,4 +212,3 @@ python3 run.py --dist 1 --task xflickrco --output_dir output/path/to/save --chec
 ```
 
 The value after language in `--fewshot` settings of xFlickr&CO is the number of few-shot samples, where we always use the maximum values.
-

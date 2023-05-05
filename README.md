@@ -79,12 +79,14 @@ For more details, please read the code dataset/pretrain_dataset_multilingual.py 
 
 ### Checkpoints
 
-We pretrain the model for only 30 epochs on 2 A100 GPUs. The batch size is set to 128.
+We pretrain the model for only 30 epochs on 2 A100 GPUs. The batch size is set to 128. 
 
-|                                    Checkpoint                                     |               Dataset                |
-|:---------------------------------------------------------------------------------:|:------------------------------------:|
-| [CCRK_2M_10lan_30epoch](https://pan.baidu.com/s/1U4rNTD103N8T8MSSrI6bLA?pwd=cdkg) |          CC2M 10lan Version          |
-| [CCRK_3M_10lan_30epoch](https://pan.baidu.com/s/1mb6JU_ZyvvkrDT5Zn69hRw?pwd=rt1r) |    CC2M+COCO+VG+SBU 10lan Version    |
+We provide our checkpoints for finetuning and evaluation: [CCRK_Checkpoints](https://drive.google.com/drive/folders/1yOrGutgi-FO_xu9zMADbWhHOFTeLqPLB?usp=sharing)
+
+|        Checkpoint         |               Dataset                |
+|:-------------------------:|:------------------------------------:|
+| ccrk_2m_10lan_epoch_29.th |          CC2M 10lan Version          |
+| ccrk_3m_10lan_epoch_29.th |    CC2M+COCO+VG+SBU 10lan Version    |
 
 Tips: 
 

@@ -1,0 +1,11 @@
+timm==0.4.9
+transformers
+ruamel_yaml==0.17.21
+opencv-python==4.7.0.68
+scikit-image==0.19.3
+torch==1.13.0
+torchvision==0.14.0
+pycocotools==2.0.6
+pycocoevalcap==1.2
+datasets==2.8.0
+easynmt==2.0.2

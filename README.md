@@ -1,7 +1,7 @@
 # CCRK: Improving the Consistency in Cross-Lingual Cross-Modal Retrieval with 1-to-K Contrastive Learning
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/BUAADreamer/CCRK/blob/main/licence)
-[![arxiv badge](https://img.shields.io/badge/arxiv-2405.xxxxx-red)](https://arxiv.org/abs/2405.xxxxx)
+[![arxiv badge](https://img.shields.io/badge/arxiv-2406.18254-red)](https://arxiv.org/abs/2406.18254)
 [![Pytorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?e&logo=PyTorch&logoColor=white)](https://pytorch.org/)
 
 [//]: # ([![PWC]&#40;https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/xxx/zero-shot-cross-lingual-text-to-image&#41;]&#40;https://paperswithcode.com/sota/zero-shot-cross-lingual-text-to-image?p=xxx&#41;)
@@ -242,6 +242,10 @@ If this work is helpful, please kindly cite as:
 
 ```bibtex
 @article{nie2024improving,
+  title={Improving the Consistency in Cross-Lingual Cross-Modal Retrieval with 1-to-K Contrastive Learning},
+  author={Nie, Zhijie and Zhang, Richong and Feng, Zhangchi and Huang, Hailang and Liu, Xudong},
+  journal={arXiv preprint arXiv:2406.18254},
+  year={2024}
 }
 ```
 

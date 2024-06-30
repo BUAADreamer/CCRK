@@ -4,7 +4,7 @@
 [![arxiv badge](https://img.shields.io/badge/arxiv-2406.18254-red)](https://arxiv.org/abs/2406.18254)
 [![Pytorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?e&logo=PyTorch&logoColor=white)](https://pytorch.org/)
 [![GitHub Repo stars](https://img.shields.io/github/stars/BUAADreamer/CCRK?style=social)](https://github.com/BUAADreamer/CCRK/stargazers)
-[![HF Model](https://img.shields.io/badge/🤗-Open%20in%20HF)](https://huggingface.co/BUAADreamer/CCRK)
+[![HF Model](https://img.shields.io/badge/🤗-Open%20in%20HF-blue)](https://huggingface.co/BUAADreamer/CCRK)
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-the-consistency-in-cross-lingual/zero-shot-cross-lingual-text-to-image-1)](https://paperswithcode.com/sota/zero-shot-cross-lingual-text-to-image-1?p=improving-the-consistency-in-cross-lingual)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-the-consistency-in-cross-lingual/zero-shot-cross-lingual-image-to-text-1)](https://paperswithcode.com/sota/zero-shot-cross-lingual-image-to-text-1?p=improving-the-consistency-in-cross-lingual)

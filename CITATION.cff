@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+date-released: 2024-06
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Nie"
+  given-names: "Zhijie"
+- family-names: "Zhang"
+  given-names: "Richong"
+- family-names: "Feng"
+  given-names: "Zhangchi"
+- family-names: "Huang"
+  given-names: "Hailang"
+- family-names: "Liu"
+  given-names: "Xudong"
+title: "Improving the Consistency in Cross-Lingual Cross-Modal Retrieval with 1-to-K Contrastive Learning"
+url: "https://arxiv.org/abs/2406.18254"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Nie"
+      given-names: "Zhijie"
+    - family-names: "Zhang"
+      given-names: "Richong"
+    - family-names: "Feng"
+      given-names: "Zhangchi"
+    - family-names: "Huang"
+      given-names: "Hailang"
+    - family-names: "Liu"
+      given-names: "Xudong"
+  title: "Improving the Consistency in Cross-Lingual Cross-Modal Retrieval with 1-to-K Contrastive Learning"
+  journal: "CoRR"
+  volume: "abs/2406.18254"
+  year: 2024
+  url: "https://arxiv.org/abs/2406.18254"
+  eprinttype: "arXiv"
+  eprint: "2406.18254"

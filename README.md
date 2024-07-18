@@ -1,4 +1,4 @@
-# CCRK: Improving the Consistency in Cross-Lingual Cross-Modal Retrieval with 1-to-K Contrastive Learning
+# CCRK: Improving the Consistency in Cross-Lingual Cross-Modal Retrieval with 1-to-K Contrastive Learning (KDD 2024)
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/BUAADreamer/CCRK/blob/main/licence)
 [![arxiv badge](https://img.shields.io/badge/arxiv-2406.18254-red)](https://arxiv.org/abs/2406.18254)

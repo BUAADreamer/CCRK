@@ -11,6 +11,19 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-the-consistency-in-cross-lingual/zero-shot-cross-lingual-text-to-image)](https://paperswithcode.com/sota/zero-shot-cross-lingual-text-to-image?p=improving-the-consistency-in-cross-lingual)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-the-consistency-in-cross-lingual/zero-shot-cross-lingual-image-to-text)](https://paperswithcode.com/sota/zero-shot-cross-lingual-image-to-text?p=improving-the-consistency-in-cross-lingual)
 
+## Table of Contents
+
+- [Overview](#Overview)
+- [Requirements](#Requirements)
+- [Checkpoints](#Checkpoints)
+- [Data](#Data)
+- [Pretrain](#Pretrain)
+- [Finetune](#Finetune)
+- [Citation](#Citation)
+- [Acknowledgement](#Acknowledgement)
+
+## Overview
+
 >Cross-lingual Cross-modal Retrieval (CCR) is an essential task in web search, which aims to break the barriers between modality and language simultaneously and achieves image-text retrieval in the multi-lingual scenario with a single model. In recent years, excellent progress has been made based on cross-lingual cross-modal pre-training; particularly, the methods based on contrastive learning on large-scale data have significantly improved retrieval tasks. However, these methods directly follow the existing pre-training methods in the cross-lingual or cross-modal domain, leading to two problems of inconsistency in CCR: The methods with cross-lingual style suffer from the intra-modal error propagation, resulting in inconsistent recall performance across languages in the whole dataset. The methods with cross-modal style suffer from the inter-modal optimization direction bias, resulting in inconsistent rank across languages within each instance, which cannot be reflected by Recall@K. To solve these problems, we propose a simple but effective 1-to-K contrastive learning method, which treats each language equally and eliminates error propagation and optimization bias. In addition, we propose a new evaluation metric, Mean Rank Variance (MRV), to reflect the rank inconsistency across languages within each instance. Extensive experiments on four CCR datasets show that our method improves both recall rates and MRV with smaller-scale pre-trained data, achieving the new state-of-art.
 
 <div align="center">
@@ -43,7 +56,7 @@ We pretrain the model for only 30 epochs on 2 A100 GPUs. The batch size is set t
 * `CC2M` : Because of many broken links, we only collect 1863804 images of Conceptual Captions Dataset.
 * `10lan` : `zh,en,de,fr,ja,cs,id,es,ru,tr`
 
-## data
+## Data
 
 - Download data from corresponding websites
 - If running pre-training scripts:

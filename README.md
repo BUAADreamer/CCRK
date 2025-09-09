@@ -6,11 +6,6 @@
 [![GitHub Repo stars](https://img.shields.io/github/stars/BUAADreamer/CCRK?style=social)](https://github.com/BUAADreamer/CCRK/stargazers)
 [![HF Model](https://img.shields.io/badge/🤗-Checkpoints%20in%20HF-blue)](https://huggingface.co/BUAADreamer/CCRK)
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-the-consistency-in-cross-lingual/zero-shot-cross-lingual-text-to-image-1)](https://paperswithcode.com/sota/zero-shot-cross-lingual-text-to-image-1?p=improving-the-consistency-in-cross-lingual)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-the-consistency-in-cross-lingual/zero-shot-cross-lingual-image-to-text-1)](https://paperswithcode.com/sota/zero-shot-cross-lingual-image-to-text-1?p=improving-the-consistency-in-cross-lingual)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-the-consistency-in-cross-lingual/zero-shot-cross-lingual-text-to-image)](https://paperswithcode.com/sota/zero-shot-cross-lingual-text-to-image?p=improving-the-consistency-in-cross-lingual)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-the-consistency-in-cross-lingual/zero-shot-cross-lingual-image-to-text)](https://paperswithcode.com/sota/zero-shot-cross-lingual-image-to-text?p=improving-the-consistency-in-cross-lingual)
-
 ## Table of Contents
 
 - [Overview](#Overview)
